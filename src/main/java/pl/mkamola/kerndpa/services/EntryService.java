@@ -20,4 +20,16 @@ public class EntryService {
 	public EntryDto daoToDto(EntryDao dao) {
 		return new EntryDto(dao.getId(), dao.getTitle(), dao.getContent(), dao.getType());
 	}
+
+	public EntryDao save(EntryDao entryDao) {
+		return entryRepository.save(entryDao);
+	}
+
+	public EntryDao dtoToDao(EntryDto entryDto) {
+		return EntryDao.builder()
+				.type(entryDto.getType())
+				.title(entryDto.getTitle())
+				.content(entryDto.getContent())
+				.build();
+	}
 }
